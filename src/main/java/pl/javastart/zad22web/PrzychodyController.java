@@ -33,15 +33,15 @@ public class PrzychodyController {
 
         switch (opcja) {
             case DODAJ_PRZYCHOD: {
-                przychody = new Przychody();
-                przychody.setType("przychody");
-                model.addAttribute("przychody", przychody);
+                Przychody newPrzychody = new Przychody();
+                newPrzychody.setType("przychody");
+                model.addAttribute("newPrzychod", newPrzychody);
                 return "formularz";
             }
             case DODAJ_WYDATEK: {
-                przychody = new Przychody();
-                przychody.setType("wydatki");
-                model.addAttribute("przychody", przychody);
+                Przychody newPrzychody = new Przychody();
+                newPrzychody.setType("wydatki");
+                model.addAttribute("newPrzychod", newPrzychody);
                 return "formularz";
             }
             case POKAZ_PRZYCHODY: {
