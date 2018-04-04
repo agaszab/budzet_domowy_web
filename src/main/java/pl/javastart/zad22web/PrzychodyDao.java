@@ -8,10 +8,10 @@ import java.util.Scanner;
 
 public class PrzychodyDao {
 
-        private static final String URL = "jdbc:mysql://localhost:3306/wydatki?characterEncoding=utf8";
-        private static final String USER = "root";
-        private static final String PASS = "kociakolka";
-        private Connection connection;
+    private static final String URL = "jdbc:mysql://localhost:3306/wydatki?characterEncoding=utf8";
+    private static final String USER = "root";
+    private static final String PASS = "root";
+    private Connection connection;
 
 
         public PrzychodyDao() {
