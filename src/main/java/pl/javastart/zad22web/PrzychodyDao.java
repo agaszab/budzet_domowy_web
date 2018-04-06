@@ -46,17 +46,18 @@ public class PrzychodyDao {
 
 
         public void save (Przychody przychody) {
-            final String sql="insert into home_budget (type, description, amount, date ) values (?, ?, ?,?,?)";
+            final String sql="insert into home_budget (type, description, amount, date ) values (?,?,?,?)";
             try
             {
-                PreparedStatement prepStmt = connection.prepareStatement (sql);
-                prepStmt.setString(2,przychody.getType ());
-                prepStmt.setString(3,przychody.getDescription());
-                prepStmt.setLong(4,przychody.getAmount());
-                LocalDate date=przychody.getDate();
-                Date sqlDate=Date.valueOf(date);
-                prepStmt.setDate(5, sqlDate);
+
+                PreparedStatement prepStmt = connection.prepareStatement(sql);
+
+                prepStmt.setString(1, przychody.getType());
+                prepStmt.setString(2, przychody.getDescription());
+                prepStmt.setDouble(3, przychody.getAmount());
+                prepStmt.setDate(4, przychody.getDate());
                 prepStmt.executeUpdate();
+
             }
             catch(SQLException e ) {
                 System.out.println( "Could not save record ");
@@ -74,22 +75,7 @@ public class PrzychodyDao {
             }
         }
 
-    public Przychody wczytaj (String rodzaj) throws SQLException {
-        Scanner scan=new Scanner(System.in);
-        System.out.println("Wpisz pozycję do bazy przychodów/wydatków");
-        System.out.println("Opis transakcji:");
-        String opis=scan.nextLine();
-        System.out.println("Kwota:");
-        long kwota=scan.nextLong();
-        LocalDate data=LocalDate.now();
-        Przychody przychody=new Przychody();
-        przychody.setType(rodzaj);
-        przychody.setDescription(opis);
-        przychody.setAmount(kwota);
-        przychody.setDate(data);
 
-        return przychody;
-    }
 
     public String addForm (Model model, String typ) {
         model.addAttribute("newPrzychody" , new Przychody());

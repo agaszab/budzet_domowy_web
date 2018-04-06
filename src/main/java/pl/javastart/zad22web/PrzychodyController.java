@@ -12,9 +12,11 @@ import java.sql.SQLException;
 public class PrzychodyController {
 
     private Przychody przychody;
+    private PrzychodyDao dao;
 
-    public PrzychodyController(Przychody przychody) {
+    public PrzychodyController(Przychody przychody, PrzychodyDao dao) {
         this.przychody = przychody;
+        this.dao = dao;
     }
 
     public PrzychodyController() {
@@ -28,8 +30,6 @@ public class PrzychodyController {
 
     @RequestMapping("/list")
     public String opcje(Model model, @RequestParam Opcje opcja) throws SQLException {
-
-        PrzychodyDao dao = new PrzychodyDao();
 
         switch (opcja) {
             case DODAJ_PRZYCHOD: {
@@ -67,5 +67,11 @@ public class PrzychodyController {
         przychody.setType(opcje);
         model.addAttribute("przychody", przychody);
         return "formularz";
+    }
+
+    @RequestMapping("/add")
+    public String add(Przychody przychody) {
+        dao.save(przychody);
+        return "redirect:/index";
     }
 }
