@@ -4,11 +4,13 @@ import org.springframework.ui.Model;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PrzychodyDao {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/wydatki?characterEncoding=utf8";
+    private static final String URL = "jdbc:mysql://localhost:3306/budzet?characterEncoding=utf8";
     private static final String USER = "root";
     private static final String PASS = "root";
     private Connection connection;
@@ -28,25 +30,26 @@ public class PrzychodyDao {
         }
 
 
-        public void show(String type ) throws SQLException {
-            Statement statement = connection.createStatement();
-            String query= "select * from home_budget where type ='"+type+"' ";
-            ResultSet resultSet = statement.executeQuery(query);
-            while(resultSet.next()) {
-                long id = resultSet.getLong("id");
-                type= resultSet.getString("type");
-                String description= resultSet.getString("description");
-                long amount =resultSet.getLong("amount");
-                Date date=resultSet.getDate("date");
-
-                System.out.println (id+ " " + type + "  " +description+"  KWOTA: "+amount+" DNIA: "+date);
-            }
+    public List<Przychody> show( String type ) throws SQLException {
+        List<Przychody> listaPrzychodow = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        String query= "select * from przychody where type ='"+type+"' ";
+        ResultSet result = statement.executeQuery(query);
+        while(result.next()) {
+            long id=Long.parseLong(result.getString("id"));
+            String typ=type;
+            String desc=result.getString("description");
+            long amount=Long.parseLong(result.getString("amount"));
+            Date date=result.getDate("date");
+            Przychody przychody= new Przychody (id, type, desc, amount, date);
+            listaPrzychodow.add(przychody);
         }
-
+        return listaPrzychodow;
+    }
 
 
         public void save (Przychody przychody) {
-            final String sql="insert into home_budget (type, description, amount, date ) values (?,?,?,?)";
+            final String sql="insert into przychody (type, description, amount, date ) values (?,?,?,?)";
             try
             {
 
