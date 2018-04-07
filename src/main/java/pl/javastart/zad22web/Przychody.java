@@ -12,6 +12,13 @@ public class Przychody {
     private long amount;  // kwota transakcji
     private Date date;  // data transakcji
 
+    public Przychody(long id, String type, String description, long amount, Date date) {
+        this.id = id;
+        this.type = type;
+        this.description = description;
+        this.amount = amount;
+        this.date = date;
+    }
 
     public Przychody() {
     }
