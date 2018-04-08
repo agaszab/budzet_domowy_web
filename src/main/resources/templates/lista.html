@@ -9,38 +9,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Budżet domowy</title>
-    <style>
-        body {
-            margin-top: 20px;
-            margin-left: 10px;
-            background-color: lightblue;
-        }
-    </style>
-
+    <style th:include="menu::styl"></style>
 </head>
 <body>
-
-
-<div class="row">
-    <div class="col-xs-6 col-md-8"><div th:include="menu :: menu"></div></div>
-
-    <div class="col-xs-12 col-md-4">
-
-
+<ul th:include="menu :: menu" class="navbar navbar-default"></ul>
+<div  class="container">
 
         <ul class="list-group">
-            <li class="list-group-item" th:each="listaPrzychodow: ${listaPrzychodow}">
-                <p th:text="${listaPrzychodow.type}"></p>
-            <p th:text="'Typ: '+${listaPrzychodow.type}"></p>
-            <p th:text="'Opis: '+${listaPrzychodow.description}"></p>
-            <p th:text="'Kwota: '+${listaPrzychodow.amount}"></p>
-            <p th:text="'Data: '+${listaPrzychodow.date}"></p>
+            <li class="list-group-item" th:each="przychody: ${listaPrzychodow}">
+                <p th:text="${przychody.type}"></p>
+            <p th:text="'Typ: '+${przychody.type}"></p>
+            <p th:text="'Opis: '+${przychody.description}"></p>
+            <p th:text="'Kwota: '+${przychody.amount}"></p>
+            <p th:text="'Data: '+${przychody.date}"></p>
             </li>
         </ul>
 
-    </div>
+
 
 </div>
+
 
 </body>
 </html>

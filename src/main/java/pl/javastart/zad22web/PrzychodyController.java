@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -73,14 +77,13 @@ public class PrzychodyController {
 
 
 
-
     @GetMapping("/listuj")
     public String listuj (Model model, @RequestParam String opcja) throws SQLException{
         String typ;
-        List<Przychody> listaPrzychodow;
         if (opcja.equals("POKAZ_PRZYCHODY")) typ="przychody"; else typ="wydatki";
-        model.addAttribute ("typ", typ);
+        List<Przychody> listaPrzychodow;
         listaPrzychodow=dao.show(typ);
+        model.addAttribute ("typ", typ);
         model.addAttribute("listaPrzychodow", listaPrzychodow);
         return "lista";
     }

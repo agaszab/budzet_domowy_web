@@ -9,26 +9,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Budżet domowy</title>
-<style>
-    body {
-        margin-top: 20px;
-        margin-left: 10px;
-        background-color: lightblue;
-        background-image: url("../static/budzet.jpg");
-        width: 1700px;
-        height: 1133px;
-    }
-</style>
-
+    <style th:include="menu::styl"></style>
 </head>
 <body>
+<ul th:include="menu :: menu" class="navbar navbar-default"></ul>
+<div  class="container">
 
 
-<div class="row">
-    <div class="col-xs-6 col-md-8"><div th:include="menu :: menu"></div></div>
 
-    <div class="col-xs-12 col-md-4">.............</div>
 </div>
+
 
 </body>
 </html>
+

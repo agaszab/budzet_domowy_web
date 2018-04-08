@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 </head>
 <body>
+<div>
+    <style  th:fragment="styl">
+        body{
+            background-color: #FFFDD7;
+            align-content: center;
+        }
+        h1{margin-top: 30px;}
+        h2{margin-top: 20px;}
+        .container ul {
+            background-color: #FFF;
+        }
+        .container ul li a {
+            background-color: #FFF;
+            color: #333;
+            text-align: left;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            text-align: left;
+        }
 
-<div th:fragment="menu">
-<p><a href="dodaj?opcja=DODAJ_PRZYCHOD" class="badge badge-primary"><button type= "button" class= "btn btn-primary btn-lg btn-block" style="width: 300px"> dodaj nowy przychód </button> </a></p>
-<p><a href="dodaj?opcja=DODAJ_WYDATEK" class="badge badge-primary"> <button type= "button" class= "btn btn-primary btn-lg btn-block"style="width: 300px" > dodaj nowy wydatek </button></a></p>
-<p><a href="listuj?opcja=POKAZ_PRZYCHODY" class="badge badge-primary"><button type= "button" class= "btn btn-primary btn-lg btn-block"style="width: 300px" > pokaż wszystkie przychody </button> </a></p>
-<p><a href="listuj?opcja=POKAZ_WYDATKI" class="badge badge-primary"> <button type= "button" class= "btn btn-primary btn-lg btn-block"style="width: 300px" > pokaż wszystkie wydatki </button></a></p></div>
+        li {
+            float: left;
+            padding-right: 10px;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+            text-underline: lavender;
+        }
+    </style>
 </div>
+
+
+<div>
+    <ul th:fragment="menu">
+        <li><a class="active" href="#home">BUDŻET  DOMOWY</a></li>
+        <li><a href="dodaj?opcja=DODAJ_PRZYCHOD">dodaj nowy przychód</a></li>
+        <li><a href="dodaj?opcja=DODAJ_WYDATE">dodaj nowy wydatek</a></li>
+        <li><a href="listuj?opcja=POKAZ_PRZYCHODY">Lista przychodów</a></li>
+        <li><a href="listuj?opcja=POKAZ_WYDATKI">Lista wydatków</a></li>
+    </ul></div>
 
 </body>
 </html>
+

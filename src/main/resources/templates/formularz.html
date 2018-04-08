@@ -9,23 +9,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Budżet domowy</title>
-    <style>
-        body {
-            margin-top: 20px;
-            margin-left: 10px;
-            margin-right: 20px;
-            background-color: lightblue;
-        }
-    </style>
-
+    <style th:include="menu::styl"></style>
 </head>
 <body>
+<ul th:include="menu :: menu" class="navbar navbar-default"></ul>
+
+<div  class="container">
 
 
-<div class="row">
-    <div class="col-xs-5 col-md-4"><div th:include="menu :: menu"></div></div>
-
-    <div class="col-xs-10 col-md-8">
         <h2  th th:text="'Dodaj '+ ${newPrzychody.type}"></h2>
 
         <form action="/add" method="post" th:object="${newPrzychody}" style="width: 500px">
@@ -55,8 +46,9 @@
         </form>
 
 
-    </div>
+
 </div>
+
 
 </body>
 </html>

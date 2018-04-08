@@ -31,13 +31,13 @@ public class PrzychodyDao {
 
 
     public List<Przychody> show( String type ) throws SQLException {
+
         List<Przychody> listaPrzychodow = new ArrayList<>();
         Statement statement = connection.createStatement();
-        String query= "select * from przychody where type ='"+type+"' ";
+        String query= "select * from przychody where type = ? ";
         ResultSet result = statement.executeQuery(query);
         while(result.next()) {
             long id=Long.parseLong(result.getString("id"));
-            String typ=type;
             String desc=result.getString("description");
             long amount=Long.parseLong(result.getString("amount"));
             Date date=result.getDate("date");
