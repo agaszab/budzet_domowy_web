@@ -1,6 +1,8 @@
 package pl.javastart.zad22web;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,16 +19,16 @@ import java.util.List;
 @Controller
 public class PrzychodyController {
 
-    private Przychody przychody;
+
+
     private PrzychodyDao dao;
 
-    public PrzychodyController(Przychody przychody, PrzychodyDao dao) {
-        this.przychody = przychody;
+    public PrzychodyController(PrzychodyDao dao) {
         this.dao = dao;
     }
 
-    public PrzychodyController() {
-    }
+ //   public PrzychodyController() {
+//    }
 
     @RequestMapping("/")
     public static String main() {
@@ -70,12 +72,15 @@ public class PrzychodyController {
     }
 
     @RequestMapping("/add")
-    public String add(Przychody przychody) {
+    public String add(Model model,Przychody przychody) {
         dao.save(przychody);
-        return "redirect:/index";
+        return "redirect:/info";
     }
 
-
+    @RequestMapping("/info")
+    public String info() {
+        return "info";
+    }
 
     @GetMapping("/listuj")
     public String listuj (Model model, @RequestParam String opcja) throws SQLException{

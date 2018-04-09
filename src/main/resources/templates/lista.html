@@ -14,11 +14,9 @@
 <body>
 <ul th:include="menu :: menu" class="navbar navbar-default"></ul>
 <div  class="container">
-
+    <h2 th:text="${typ}"></h2>
         <ul class="list-group">
             <li class="list-group-item" th:each="przychody: ${listaPrzychodow}">
-                <p th:text="${przychody.type}"></p>
-            <p th:text="'Typ: '+${przychody.type}"></p>
             <p th:text="'Opis: '+${przychody.description}"></p>
             <p th:text="'Kwota: '+${przychody.amount}"></p>
             <p th:text="'Data: '+${przychody.date}"></p>

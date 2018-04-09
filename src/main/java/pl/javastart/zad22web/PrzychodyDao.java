@@ -1,5 +1,6 @@
 package pl.javastart.zad22web;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import java.sql.*;
@@ -7,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+@Repository
 public class PrzychodyDao {
 
     private static final String URL = "jdbc:mysql://localhost:3306/budzet?characterEncoding=utf8";
@@ -34,7 +35,7 @@ public class PrzychodyDao {
 
         List<Przychody> listaPrzychodow = new ArrayList<>();
         Statement statement = connection.createStatement();
-        String query= "select * from przychody where type = ? ";
+        String query= "select * from przychody where type ='"+type+"'";
         ResultSet result = statement.executeQuery(query);
         while(result.next()) {
             long id=Long.parseLong(result.getString("id"));
